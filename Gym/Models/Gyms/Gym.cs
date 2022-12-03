@@ -69,9 +69,10 @@ namespace Gym.Models.Gyms
         }
 
         public string GymInfo()
-        {
-            throw new NotImplementedException();
-        }
+            => $"{this.Name} is a {this.GetType().Name}:" + Environment.NewLine 
+                + $"Athletes: {(athletes.Count == 0 ? "No athletes" : string.Join(", ", this.athletes))}" + Environment.NewLine
+                + $"Equipment total count: {equipment.Count}" + Environment.NewLine
+                + $"Equipment total weight: {EquipmentWeight} grams";
 
         public bool RemoveAthlete(IAthlete athlete)
             => this.athletes.Remove(athlete);
