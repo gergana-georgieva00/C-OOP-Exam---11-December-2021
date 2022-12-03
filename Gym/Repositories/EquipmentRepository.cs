@@ -1,4 +1,5 @@
-﻿using Gym.Models.Gyms.Contracts;
+﻿using Gym.Models.Equipment.Contracts;
+using Gym.Models.Gyms.Contracts;
 using Gym.Repositories.Contracts;
 using System;
 using System.Collections.Generic;

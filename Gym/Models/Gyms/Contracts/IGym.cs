@@ -4,7 +4,7 @@
     using Athletes.Contracts;
     using System.Collections.Generic;
 
-    public interface IEquipment
+    public interface IGym
     {
         string Name { get; }
 

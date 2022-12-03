@@ -1,4 +1,5 @@
-﻿using Gym.Models.Athletes.Contracts;
+﻿
+using Gym.Models.Athletes.Contracts;
 using Gym.Models.Equipment.Contracts;
 using Gym.Models.Gyms.Contracts;
 using System;
