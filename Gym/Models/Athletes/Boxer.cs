@@ -6,13 +6,13 @@ namespace Gym.Models.Athletes
 {
     public class Boxer : Athlete
     {
-        public Boxer(string fullName, string motivation, int numberOfMedals, int stamina) : base(fullName, motivation, numberOfMedals, stamina)
+        public Boxer(string fullName, string motivation, int numberOfMedals) : base(fullName, motivation, numberOfMedals, 60)
         {
         }
 
         public override void Exercise()
         {
-            throw new NotImplementedException();
+            this.Stamina += 50;
         }
     }
 }
