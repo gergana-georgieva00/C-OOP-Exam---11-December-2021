@@ -74,8 +74,6 @@ namespace Gym.Models.Gyms
         }
 
         public bool RemoveAthlete(IAthlete athlete)
-        {
-            throw new NotImplementedException();
-        }
+            => this.athletes.Remove(athlete);
     }
 }
