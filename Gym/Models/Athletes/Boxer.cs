@@ -12,7 +12,13 @@ namespace Gym.Models.Athletes
 
         public override void Exercise()
         {
-            this.Stamina += 50;
+            this.Stamina += 15;
+
+            if (this.Stamina > 100)
+            {
+                this.Stamina = 100;
+                throw new ArgumentException("Stamina cannot exceed 100 points.");
+            }
         }
     }
 }
