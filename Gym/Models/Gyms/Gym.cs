@@ -3,6 +3,7 @@ using Gym.Models.Equipment.Contracts;
 using Gym.Models.Gyms.Contracts;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Gym.Models.Gyms
@@ -65,7 +66,14 @@ namespace Gym.Models.Gyms
 
         public void Exercise()
         {
-            this.athletes.ForEach(a => a.Exercise());
+            if (this.GetType().Name == "WeightliftingGym")
+            {
+                this.athletes.Where(a => a.GetType().Name == "Weightlifter").ToList().ForEach(a => a.Exercise());
+            }
+            else
+            {
+                this.athletes.Where(a => a.GetType().Name == "Boxer").ToList().ForEach(a => a.Exercise());
+            }
         }
 
         public string GymInfo()
