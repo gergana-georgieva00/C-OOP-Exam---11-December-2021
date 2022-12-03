@@ -19,11 +19,30 @@ namespace Gym.Models.Gyms
             this.Capacity = capacity;
         }
 
-        public string Name { get; private set; }
+        public string Name 
+        {
+            get => this.name;
+            private set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentException("Gym name cannot be null or empty.");
+                }
+
+                this.name = value;
+            }
+        }
 
         public int Capacity { get; private set; }
 
-        public double EquipmentWeight { get; private set; }
+        public double EquipmentWeight => this.CalculateWeight();
+
+        private double CalculateWeight()
+        {
+            double result = 0;
+            this.equipment.ForEach(e => result += e.Weight);
+            return result;
+        }
 
         public ICollection<IEquipment> Equipment => this.equipment.AsReadOnly();
 
