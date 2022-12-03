@@ -65,7 +65,7 @@ namespace Gym.Models.Gyms
 
         public void Exercise()
         {
-            throw new NotImplementedException();
+            this.athletes.ForEach(a => a.Exercise());
         }
 
         public string GymInfo()
