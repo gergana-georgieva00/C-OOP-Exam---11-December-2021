@@ -58,6 +58,8 @@ namespace Gym.Models.Athletes
                 {
                     throw new ArgumentException("Athlete's number of medals cannot be below 0.");
                 }
+
+                this.numberOfMedals = value;
             }
         }
 

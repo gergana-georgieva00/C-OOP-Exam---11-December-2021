@@ -6,26 +6,26 @@ using System.Text;
 
 namespace Gym.Repositories
 {
-    public class EquipmentRepository : IRepository<IGym>
+    public class EquipmentRepository : IRepository<IEquipment>
     {
-        private List<IGym> models;
+        private List<IEquipment> models;
 
         public EquipmentRepository()
         {
-            this.models = new List<IGym>();
+            this.models = new List<IEquipment>();
         }
 
-        public IReadOnlyCollection<IGym> Models => this.models.AsReadOnly();
+        public IReadOnlyCollection<IEquipment> Models => this.models.AsReadOnly();
 
-        public void Add(IGym model)
+        public void Add(IEquipment model)
         {
             this.models.Add(model);
         }
 
-        public IGym FindByType(string type)
+        public IEquipment FindByType(string type)
             => this.models.Find(m => m.GetType().Name == type);
 
-        public bool Remove(IGym model)
+        public bool Remove(IEquipment model)
             => this.models.Remove(model);
     }
 }
