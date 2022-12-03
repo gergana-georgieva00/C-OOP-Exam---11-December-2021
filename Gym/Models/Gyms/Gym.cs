@@ -50,7 +50,12 @@ namespace Gym.Models.Gyms
 
         public void AddAthlete(IAthlete athlete)
         {
-            throw new NotImplementedException();
+            if (this.athletes.Count == Capacity)
+            {
+                throw new InvalidOperationException("Not enough space in the gym.");
+            }
+
+            this.athletes.Add(athlete);
         }
 
         public void AddEquipment(IEquipment equipment)
