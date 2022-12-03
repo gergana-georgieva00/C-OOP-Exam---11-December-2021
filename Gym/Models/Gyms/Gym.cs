@@ -13,9 +13,10 @@ namespace Gym.Models.Gyms
         private List<IEquipment> equipment;
         private List<IAthlete> athletes;
 
-        public Gym()
+        public Gym(string name, int capacity)
         {
-
+            this.Name = name;
+            this.Capacity = capacity;
         }
 
         public string Name { get; private set; }
