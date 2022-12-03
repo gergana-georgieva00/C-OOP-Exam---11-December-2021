@@ -61,9 +61,6 @@ namespace Gym.Models.Athletes
             }
         }
 
-        public void Exercise()
-        {
-            throw new NotImplementedException();
-        }
+        public abstract void Exercise();
     }
 }
