@@ -60,7 +60,7 @@ namespace Gym.Models.Gyms
 
         public void AddEquipment(IEquipment equipment)
         {
-            throw new NotImplementedException();
+            this.equipment.Add(equipment);
         }
 
         public void Exercise()
