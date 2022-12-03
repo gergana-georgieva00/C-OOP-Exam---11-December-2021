@@ -19,17 +19,13 @@ namespace Gym.Repositories
 
         public void Add(IGym model)
         {
-            throw new NotImplementedException();
+            this.models.Add(model);
         }
 
         public IGym FindByType(string type)
-        {
-            throw new NotImplementedException();
-        }
+            => this.models.Find(m => m.GetType().Name == type);
 
         public bool Remove(IGym model)
-        {
-            throw new NotImplementedException();
-        }
+            => this.models.Remove(model);
     }
 }
