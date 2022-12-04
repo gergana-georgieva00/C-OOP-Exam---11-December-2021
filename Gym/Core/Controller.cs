@@ -1,4 +1,6 @@
 ﻿using Gym.Core.Contracts;
+using Gym.Models.Athletes;
+using Gym.Models.Athletes.Contracts;
 using Gym.Models.Equipment;
 using Gym.Models.Equipment.Contracts;
 using Gym.Models.Gyms;
@@ -23,7 +25,28 @@ namespace Gym.Core
 
         public string AddAthlete(string gymName, string athleteType, string athleteName, string motivation, int numberOfMedals)
         {
-            throw new NotImplementedException();
+            if (athleteType != "Boxer" && athleteType != "Weightlifter")
+            {
+                throw new InvalidOperationException("Invalid athlete type.");
+            }
+            if ((athleteType == "Boxer" && gymName == "WeightliftingGym") || (athleteType == "Weightlifter" && gymName == "BoxingGym"))
+            {
+                return "The gym is not appropriate.";
+            }
+
+            IAthlete athlete;
+
+            if (athleteType == "Boxer")
+            {
+                athlete = new Boxer(athleteName, motivation, numberOfMedals);
+            }
+            else
+            {
+                athlete = new Weightlifter(athleteName, motivation, numberOfMedals);
+            }
+
+            this.gyms.Find(g => g.Name == gymName).AddAthlete(athlete);
+            return $"Successfully added {athleteType} to {gymName}.";
         }
 
         public string AddEquipment(string equipmentType)
