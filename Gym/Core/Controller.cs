@@ -1,4 +1,6 @@
 ﻿using Gym.Core.Contracts;
+using Gym.Models.Equipment;
+using Gym.Models.Equipment.Contracts;
 using Gym.Models.Gyms;
 using Gym.Models.Gyms.Contracts;
 using Gym.Repositories;
@@ -26,7 +28,21 @@ namespace Gym.Core
 
         public string AddEquipment(string equipmentType)
         {
-            throw new NotImplementedException();
+            IEquipment equipment;
+            switch (equipmentType)
+            {
+                case "BoxingGloves":
+                    equipment = new BoxingGloves();
+                    break;
+                case "Kettlebell":
+                    equipment = new Kettlebell();
+                    break;
+                default:
+                    throw new InvalidOperationException("Invalid equipment type.");
+            }
+
+            this.equipment.Add(equipment);
+            return $"Successfully added {equipmentType}.";
         }
 
         public string AddGym(string gymType, string gymName)
