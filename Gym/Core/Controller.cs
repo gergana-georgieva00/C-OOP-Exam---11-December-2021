@@ -88,9 +88,7 @@ namespace Gym.Core
         }
 
         public string EquipmentWeight(string gymName)
-        {
-            throw new NotImplementedException();
-        }
+            => $"The total weight of the equipment in the gym {gymName} is {(gyms.Find(g => g.Name == gymName).EquipmentWeight):f2} grams.";
 
         public string InsertEquipment(string gymName, string equipmentType)
         {
