@@ -110,7 +110,10 @@ namespace Gym.Core
 
         public string TrainAthletes(string gymName)
         {
-            throw new NotImplementedException();
+            var gym = gyms.Find(g => g.Name == gymName);
+            gym.Exercise();
+
+            return $"Exercise athletes: {gym.Athletes.Count}.";
         }
     }
 }
