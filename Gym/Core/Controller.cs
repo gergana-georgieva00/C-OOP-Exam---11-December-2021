@@ -1,4 +1,5 @@
 ﻿using Gym.Core.Contracts;
+using Gym.Models.Gyms;
 using Gym.Models.Gyms.Contracts;
 using Gym.Repositories;
 using System;
@@ -30,7 +31,21 @@ namespace Gym.Core
 
         public string AddGym(string gymType, string gymName)
         {
-            throw new NotImplementedException();
+            IGym gym;
+            switch (gymType)
+            {
+                case "BoxingGym":
+                    gym = new BoxingGym(gymName);
+                    break;
+                case "WeightliftingGym":
+                    gym = new WeightliftingGym(gymName);
+                    break;
+                default:
+                    throw new InvalidOperationException("Invalid gym type.");
+            }
+
+            this.gyms.Add(gym);
+            return $"Successfully added {gymType}.";
         }
 
         public string EquipmentWeight(string gymName)
