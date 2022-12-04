@@ -19,6 +19,8 @@ namespace Gym.Models.Gyms
         {
             this.Name = name;
             this.Capacity = capacity;
+            this.equipment = new List<IEquipment>();
+            this.athletes = new List<IAthlete>();
         }
 
         public string Name 
@@ -78,10 +80,24 @@ namespace Gym.Models.Gyms
         }
 
         public string GymInfo()
-            => $"{this.Name} is a {this.GetType().Name}:" + Environment.NewLine 
-                + $"Athletes: {(athletes.Count == 0 ? "No athletes" : string.Join(", ", this.athletes))}" + Environment.NewLine
-                + $"Equipment total count: {equipment.Count}" + Environment.NewLine
-                + $"Equipment total weight: {EquipmentWeight} grams";
+        {
+            var sb = new StringBuilder();
+
+            var athleteNames = new List<string>();
+            foreach (var athlete in this.athletes)
+                athleteNames.Add(athlete.FullName);
+
+            sb.AppendLine($"{this.Name} is a {this.GetType().Name}:");
+            sb.AppendLine($"Athletes: {(athletes.Count == 0 ? "No athletes" : string.Join(", ", athleteNames))}");
+            sb.AppendLine($"Equipment total count: {equipment.Count}");
+            sb.AppendLine($"Equipment total weight: {EquipmentWeight} grams");
+
+            return sb.ToString().Trim();
+        }
+            //=> $"{this.Name} is a {this.GetType().Name}:" + Environment.NewLine 
+            //    + $"Athletes: {(athletes.Count == 0 ? "No athletes" : string.Join(", ", this.athletes))}" + Environment.NewLine
+            //    + $"Equipment total count: {equipment.Count}" + Environment.NewLine
+            //    + $"Equipment total weight: {EquipmentWeight} grams";
 
         public bool RemoveAthlete(IAthlete athlete)
             => this.athletes.Remove(athlete);

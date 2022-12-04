@@ -25,11 +25,13 @@ namespace Gym.Core
 
         public string AddAthlete(string gymName, string athleteType, string athleteName, string motivation, int numberOfMedals)
         {
+            var gym = gyms.Find(g => g.Name == gymName);
+
             if (athleteType != "Boxer" && athleteType != "Weightlifter")
             {
                 throw new InvalidOperationException("Invalid athlete type.");
             }
-            if ((athleteType == "Boxer" && gymName == "WeightliftingGym") || (athleteType == "Weightlifter" && gymName == "BoxingGym"))
+            if ((athleteType == "Boxer" && gym.GetType().Name == "WeightliftingGym") || (athleteType == "Weightlifter" && gym.GetType().Name == "BoxingGym"))
             {
                 return "The gym is not appropriate.";
             }
@@ -103,7 +105,9 @@ namespace Gym.Core
 
         public string Report()
         {
-            throw new NotImplementedException();
+            var sb = new StringBuilder();
+            gyms.ForEach(g => sb.AppendLine(g.GymInfo()));
+            return sb.ToString().Trim();
         }
 
         public string TrainAthletes(string gymName)
