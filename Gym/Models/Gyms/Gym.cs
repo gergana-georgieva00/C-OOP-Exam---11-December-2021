@@ -90,15 +90,11 @@ namespace Gym.Models.Gyms
             sb.AppendLine($"{this.Name} is a {this.GetType().Name}:");
             sb.AppendLine($"Athletes: {(athletes.Count == 0 ? "No athletes" : string.Join(", ", athleteNames))}");
             sb.AppendLine($"Equipment total count: {equipment.Count}");
-            sb.AppendLine($"Equipment total weight: {EquipmentWeight} grams");
+            sb.AppendLine($"Equipment total weight: {EquipmentWeight:f2} grams");
 
             return sb.ToString().Trim();
         }
-            //=> $"{this.Name} is a {this.GetType().Name}:" + Environment.NewLine 
-            //    + $"Athletes: {(athletes.Count == 0 ? "No athletes" : string.Join(", ", this.athletes))}" + Environment.NewLine
-            //    + $"Equipment total count: {equipment.Count}" + Environment.NewLine
-            //    + $"Equipment total weight: {EquipmentWeight} grams";
-
+        
         public bool RemoveAthlete(IAthlete athlete)
             => this.athletes.Remove(athlete);
     }
