@@ -71,7 +71,13 @@ namespace Gym.Core
 
         public string InsertEquipment(string gymName, string equipmentType)
         {
-            throw new NotImplementedException();
+            if (this.equipment.FindByType(equipmentType) is null)
+            {
+                throw new InvalidOperationException($"There isn’t equipment of type {equipmentType}.");
+            }
+
+            this.gyms.Find(g => g.Name == gymName).AddEquipment(this.equipment.FindByType(equipmentType));
+            return $"Successfully added {equipmentType} to {gymName}.";
         }
 
         public string Report()
