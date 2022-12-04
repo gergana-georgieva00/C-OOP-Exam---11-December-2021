@@ -100,6 +100,8 @@ namespace Gym.Core
             }
 
             this.gyms.Find(g => g.Name == gymName).AddEquipment(this.equipment.FindByType(equipmentType));
+            this.equipment.Remove(this.equipment.FindByType(equipmentType));
+
             return $"Successfully added {equipmentType} to {gymName}.";
         }
 
